@@ -1,0 +1,24 @@
+<p>search works!</p>
+<div>
+    <input
+      type="text"
+      placeholder="Enter search term"
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="onSearch()"
+    />
+    <button (click)="onSearch()">Search</button>
+  </div>
+  
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+  
+  <ul *ngIf="searchResults.length > 0">
+    <li *ngFor="let paper of searchResults">
+      {{ paper.title }}
+    </li>
+  </ul>
+  
+  <div *ngIf="!isLoading && !errorMessage && searchResults.length === 0 && searchTerm">
+    No results found.
+  </div>
+  
