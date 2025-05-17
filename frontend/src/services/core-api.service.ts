@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CoreApiService {
   private baseUrl = environment.coreApiBaseUrl;
-  private apiKey = environment.coreApiKey; // ← Put your actual API key here
+  private apiKey = environment.coreApiKey;
 
   constructor(private http: HttpClient) {}
 

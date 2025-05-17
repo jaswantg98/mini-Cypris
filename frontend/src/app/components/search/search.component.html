@@ -1,24 +1,29 @@
-<p>search works!</p>
-<div>
-    <input
-      type="text"
-      placeholder="Enter search term"
-      [(ngModel)]="searchTerm"
-      (keyup.enter)="onSearch()"
-    />
-    <button (click)="onSearch()">Search</button>
-  </div>
+<div class="search-container">
+    <mat-card class="search-card">
+      <h2>Search Research Papers</h2>
+      <mat-form-field appearance="outline" class="search-input">
+        <mat-label>Enter search term</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (keyup.enter)="onSearch()" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+    </mat-card>
   
-  <div *ngIf="isLoading">Loading...</div>
-  <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+    <div class="loader-container" *ngIf="isLoading">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
   
-  <ul *ngIf="searchResults.length > 0">
-    <li *ngFor="let paper of searchResults">
-      {{ paper.title }}
-    </li>
-  </ul>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
   
-  <div *ngIf="!isLoading && !errorMessage && searchResults.length === 0 && searchTerm">
-    No results found.
+    <div *ngIf="!isLoading && !errorMessage && searchResults.length === 0 && searchTerm" class="no-results">
+      No results found.
+    </div>
+  
+    <div *ngIf="searchResults.length > 0" class="results-container">
+      <mat-card *ngFor="let paper of searchResults; let i = index" class="result-card">
+        <h3>{{ i + 1 }}. {{ paper.title }}</h3>
+      </mat-card>
+    </div>
   </div>
   
