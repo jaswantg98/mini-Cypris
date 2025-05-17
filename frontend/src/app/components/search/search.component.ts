@@ -13,9 +13,9 @@ export class SearchComponent {
 
   onSearch() {
     const term = this.searchTerm.trim();
-    if (!term) {
-      return;
-    }
+    // if (!term) {
+    //   return;
+    // }
     // Navigate to /result?q=term
     this.router.navigate(['/result'], { queryParams: { q: term } });
   }

@@ -1,0 +1,16 @@
+.dialog-container {
+    padding: 24px;
+    text-align: center;
+    max-width: 300px;
+  }
+  
+  .title {
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+  }
+  
+  .message {
+    margin-bottom: 24px;
+    color: #555;
+  }
+  
