@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CoreApiService } from 'src/services/core-api.service'; 
 import { Observable } from 'rxjs';
+import { Result } from 'src/app/models/result.model';
 
 @Component({
   selector: 'app-search',
@@ -10,11 +11,16 @@ import { Observable } from 'rxjs';
 export class SearchComponent {
 
   searchTerm: string = '';
-  searchResults: any[] = [];
+  searchResults: Result[] = [];
   isLoading: boolean = false;
   errorMessage: string = '';
 
   constructor(private coreApiService: CoreApiService) {}
+
+  getAuthorNames(paper: Result): string {
+    return paper.authors?.map(author => author.name).join(', ') || 'N/A';
+  }
+  
 
   onSearch() {
     if (!this.searchTerm.trim()) {

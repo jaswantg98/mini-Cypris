@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CoreApiResponse } from 'src/app/models/core-api-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoreApiService {
   private baseUrl = environment.coreApiBaseUrl;
-  private apiKey = environment.coreApiKey; // ← Put your actual API key here
+  private apiKey = environment.coreApiKey;
 
   constructor(private http: HttpClient) {}
 
@@ -21,11 +22,11 @@ export class CoreApiService {
     const params = new HttpParams()
       .set('q', `fullText:"${keywords}"`)
 
-    return this.http.get(this.baseUrl, { headers, params }).pipe(
-      catchError((error) => {
-        console.error(`API error: ${error.status} - ${error.message}`);
-        return throwError(() => new Error('Failed to fetch data from CORE API'));
-      })
-    );
+      return this.http.get<CoreApiResponse>(this.baseUrl, { headers, params }).pipe(
+        catchError((error) => {
+          console.error(`API error: ${error.status} - ${error.message}`);
+          return throwError(() => new Error('Failed to fetch data from CORE API'));
+        })
+      );
   }
 }
