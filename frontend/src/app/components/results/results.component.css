@@ -1,0 +1,113 @@
+/* Wrapper to center everything */
+.results-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+  
+  /* Spinner & messages centered */
+  .loader-container,
+  .error-message,
+  .no-results {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Heading spacing */
+  .results-wrapper h2 {
+    margin-bottom: 16px;
+  }
+  
+  /* Container that holds the accordion */
+  .results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+  }
+  
+  /* Each panel is centered and constrained */
+  .result-panel {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  /* Card styling */
+  .result-card {
+    padding: 20px;
+    min-height: 140px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Paragraphs inside cards */
+  .result-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  /* Accordion title & description */
+  mat-panel-title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  mat-panel-description {
+    color: #777;
+  }
+  
+  /* Icon styling */
+  .icon {
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #3f51b5;
+  }
+  
+  /* Expansion panel header tweaks */
+  ::ng-deep .mat-expansion-panel-header {
+    min-height: 64px !important;
+    padding: 16px;
+    height: auto !important;
+  }
+  
+  ::ng-deep .mat-expansion-panel-header-title {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: normal;
+    line-height: 1.4;
+    margin-right: 16px;
+    flex: 1 1 auto;
+    align-self: center;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  
+  ::ng-deep .mat-expansion-panel-header-description {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    white-space: normal;
+    flex: 0 0 auto;
+    margin: 0;
+    align-self: center;
+  }
+  
+  ::ng-deep .mat-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  ::ng-deep .mat-accordion .mat-expansion-panel {
+    margin-bottom: 16px;
+    overflow: visible;
+  }
+  

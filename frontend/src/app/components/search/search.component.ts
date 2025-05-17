@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { CoreApiService } from 'src/services/core-api.service'; 
-import { Observable } from 'rxjs';
-import { Result } from 'src/app/models/result.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -9,42 +7,16 @@ import { Result } from 'src/app/models/result.model';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-
   searchTerm: string = '';
-  searchResults: Result[] = [];
-  isLoading: boolean = false;
-  errorMessage: string = '';
 
-  constructor(private coreApiService: CoreApiService) {}
-
-  getAuthorNames(paper: Result): string {
-    return paper.authors?.map(author => author.name).join(', ') || 'N/A';
-  }
-  
+  constructor(private router: Router) {}
 
   onSearch() {
-    if (!this.searchTerm.trim()) {
-      this.searchResults = [];
+    const term = this.searchTerm.trim();
+    if (!term) {
       return;
     }
-
-    console.log("Search term: ", this.searchTerm);
-    
-
-    this.isLoading = true;
-    this.errorMessage = '';
-    this.coreApiService.searchOutputsByKeywords(this.searchTerm).subscribe({
-      next: (response) => {
-        this.isLoading = false;
-        this.searchResults = response.results || [];
-        console.log("no error, result: ", this.searchResults);
-        
-      },
-      error: (error) => {
-        this.isLoading = false;
-        this.errorMessage = 'Error fetching results';
-        console.error(error);
-      }
-    });
+    // Navigate to /result?q=term
+    this.router.navigate(['/result'], { queryParams: { q: term } });
   }
 }

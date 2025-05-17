@@ -15,12 +15,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { ResultsComponent } from './components/results/results.component';
+import { InfoComponent } from './components/info/info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    ResultsComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
