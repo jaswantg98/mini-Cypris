@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoreApiService } from 'src/services/core-api.service';
 import { Result } from 'src/app/models/result.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -16,7 +17,8 @@ export class ResultsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private coreApiService: CoreApiService
+    private coreApiService: CoreApiService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -45,5 +47,11 @@ export class ResultsComponent implements OnInit {
 
   getAuthorNames(paper: Result): string {
     return paper.authors?.map(a => a.name).join(', ') || 'N/A';
+  }
+  goToInfo(paper: Result) {
+    this.router.navigate(
+      ['/about', paper.id],
+      { state: { paper } }
+    );
   }
 }

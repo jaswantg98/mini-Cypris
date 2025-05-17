@@ -1,0 +1,53 @@
+.info-card {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 16px;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .thumbnail {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title-block .title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .title-block .subtitle {
+    margin: 4px 0 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .title-block .date {
+    margin-left: 8px;
+    color: #999;
+  }
+  
+  .field {
+    margin: 16px 0;
+    line-height: 1.4;
+  }
+  
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  
+  .link-btn {
+    text-transform: capitalize;
+  }
+  

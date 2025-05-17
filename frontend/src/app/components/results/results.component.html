@@ -1,63 +1,58 @@
-
 <app-search></app-search>
 <div class="results-wrapper">
-    <!-- Optional heading -->
-    <h2 *ngIf="searchTerm">Results for “{{ searchTerm }}”</h2>
-  
-    <!-- Loading spinner -->
-    <div class="loader-container" *ngIf="isLoading">
-      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
-    </div>
-  
-    <!-- Error message -->
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-  
-    <!-- No-results fallback -->
-    <div
-      *ngIf="!isLoading && !errorMessage && searchResults.length === 0"
-      class="no-results"
-    >
-      No results found for “{{ searchTerm }}.”
-    </div>
-  
-    <!-- Results accordion -->
-    <div *ngIf="searchResults.length > 0" class="results-container">
-      <mat-accordion>
-        <mat-expansion-panel
-          *ngFor="let paper of searchResults; let i = index"
-          class="result-panel"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{ i + 1 }}. {{ paper.title }}
-            </mat-panel-title>
-            <mat-panel-description>
-              {{ paper.publisher || 'Unknown Publisher' }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-  
-          <mat-card class="result-card">
-            <mat-card-content>
-              <p *ngIf="paper.authors?.length">
-                <mat-icon class="icon">group</mat-icon>
-                <strong>Authors:</strong> {{ getAuthorNames(paper) }}
-              </p>
-  
-              <p *ngIf="paper.createdDate">
-                <mat-icon class="icon">event</mat-icon>
-                <strong>Created:</strong> {{ paper.createdDate | date }}
-              </p>
-  
-              <p *ngIf="paper.publisher">
-                <mat-icon class="icon">business</mat-icon>
-                <strong>Publisher:</strong> {{ paper.publisher }}
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+  <h2 *ngIf="searchTerm">Results for “{{ searchTerm }}”</h2>
+
+  <div class="loader-container" *ngIf="isLoading">
+    <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
   </div>
-  
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && searchResults.length === 0" class="no-results">
+    No results found for “{{ searchTerm }}.”
+  </div>
+
+  <div *ngIf="searchResults.length > 0" class="results-container">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let paper of searchResults; let i = index" class="result-panel">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <a class="paper-link" (click)="goToInfo(paper)">
+              {{ i + 1 }}. {{ paper.title }}
+            </a>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ paper.publisher || 'Unknown Publisher' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="result-card">
+          <mat-card-content>
+            <p *ngIf="paper.authors?.length">
+              <mat-icon class="icon">group</mat-icon>
+              <strong>Authors:</strong> {{ getAuthorNames(paper) }}
+            </p>
+
+            <p *ngIf="paper.createdDate">
+              <mat-icon class="icon">event</mat-icon>
+              <strong>Created:</strong> {{ paper.createdDate | date }}
+            </p>
+
+            <p *ngIf="paper.publisher">
+              <mat-icon class="icon">business</mat-icon>
+              <strong>Publisher:</strong> {{ paper.publisher }}
+            </p>
+          </mat-card-content>
+
+          <mat-card-actions class="more-info-action">
+            <button mat-button color="primary" (click)="goToInfo(paper)">
+              More Info
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

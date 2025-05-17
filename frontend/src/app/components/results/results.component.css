@@ -110,4 +110,27 @@
     margin-bottom: 16px;
     overflow: visible;
   }
+
+  .paper-link {
+    color: #1976d2;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .paper-link:hover {
+    color: #125699;
+  }
+  
+  /* Align the “More Info” button to the right */
+  .more-info-action {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 16px;
+  }
+  
+  /* Optional: add a little spacing above the button */
+  .more-info-action button {
+    margin-top: 8px;
+  }
+  
   

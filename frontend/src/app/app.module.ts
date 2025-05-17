@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ResultsComponent } from './components/results/results.component';
 import { InfoComponent } from './components/info/info.component';
 
+import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { InfoComponent } from './components/info/info.component';
     BrowserAnimationsModule,
     MatExpansionModule,
     MatIconModule,
+    MatDividerModule,
 
   ],
   providers: [],
