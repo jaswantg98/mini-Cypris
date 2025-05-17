@@ -48,7 +48,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
-
+  
   .result-card p {
     margin: 8px 0;
     font-size: 14px;
@@ -73,32 +73,47 @@
     margin-right: 5px;
     color: #3f51b5;
   }
-
   
-  /* Ensure panel header adjusts to content height */
-/* Expansion panel header adjustments */
-::ng-deep mat-expansion-panel-header {
-    min-height: auto !important;
+  /* Expansion panel header adjustments - FIXED */
+  ::ng-deep .mat-expansion-panel-header {
+    min-height: 64px !important; /* Increase minimum height */
     padding: 16px;
-    align-items: flex-start;
-    flex-wrap: wrap; /* <-- allow wrapping of content */
-    line-height: 1.5;
+    height: auto !important; /* Allow height to adjust to content */
   }
   
-  /* Title styling */
-  ::ng-deep mat-panel-title {
-    font-size: 10px;
+  /* Title styling - FIXED */
+  ::ng-deep .mat-expansion-panel-header-title {
+    font-size: 16px;
     font-weight: 600;
-    white-space: normal; /* allow title to wrap */
-    line-height: 1.4;
-    flex: 1 1 100%; /* take full width on its line */
-  }
-  
-  /* Description styling */
-  ::ng-deep mat-panel-description {
-    font-size: 14px;
-    color: #666;
     white-space: normal;
-    flex: 1 1 100%; /* take full width on its line */
+    line-height: 1.4;
+    margin-right: 16px;
+    flex: 1 1 auto;
+    align-self: center;
+    color: rgba(0, 0, 0, 0.87);
   }
   
+  /* Description styling - FIXED */
+  ::ng-deep .mat-expansion-panel-header-description {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    white-space: normal; /* Allow text wrapping */
+    flex: 0 0 auto; /* Don't grow, don't shrink, use auto width */
+    margin: 0;
+    align-self: center;
+  }
+  
+  /* Adjust content alignment inside the header */
+  ::ng-deep .mat-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Ensure proper spacing in accordion */
+  ::ng-deep .mat-accordion .mat-expansion-panel {
+    margin-bottom: 16px;
+    overflow: visible;
+  }
