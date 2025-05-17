@@ -21,9 +21,39 @@
     </div>
   
     <div *ngIf="searchResults.length > 0" class="results-container">
-      <mat-card *ngFor="let paper of searchResults; let i = index" class="result-card">
-        <h3>{{ i + 1 }}. {{ paper.title }}</h3>
-      </mat-card>
-    </div>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let paper of searchResults; let i = index" class="result-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ i + 1 }}. {{ paper.title }}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ paper.publisher || 'Unknown Publisher' }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+      
+            <mat-card class="result-card">
+              <mat-card-content>
+                <p *ngIf="paper.authors?.length">
+                  <mat-icon class="icon">group</mat-icon>
+                  <strong>Authors:</strong> {{ getAuthorNames(paper) }}
+                </p>
+      
+                <p *ngIf="paper.createdDate">
+                  <mat-icon class="icon">event</mat-icon>
+                  <strong>Created:</strong> {{ paper.createdDate | date }}
+                </p>
+      
+                <p *ngIf="paper.publisher">
+                  <mat-icon class="icon">business</mat-icon>
+                  <strong>Publisher:</strong> {{ paper.publisher }}
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      
+      
   </div>
   
