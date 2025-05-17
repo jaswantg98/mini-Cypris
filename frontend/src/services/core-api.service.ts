@@ -20,7 +20,8 @@ export class CoreApiService {
     });
 
     const params = new HttpParams()
-      .set('q', `fullText:"${keywords}"`)
+      // .set('q', `fullText:"${keywords}"`)
+      .set('q', keywords);
 
       return this.http.get<CoreApiResponse>(this.baseUrl, { headers, params }).pipe(
         catchError((error) => {

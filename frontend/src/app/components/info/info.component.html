@@ -1,0 +1,64 @@
+<mat-card class="info-card">
+    <!-- Thumbnail & Title -->
+    <div class="header">
+      <img
+        class="thumbnail"
+        [src]="getThumbnailUrl()"
+        alt="Thumbnail"
+      />
+      <div class="title-block">
+        <h1 class="title">{{ paper.title }}</h1>
+        <h3 class="subtitle">
+          {{ paper.publisher || 'Unknown Publisher' }}
+          <span class="date">• {{ paper.publishedDate | date:'mediumDate' }}</span>
+        </h3>
+      </div>
+    </div>
+  
+    <mat-divider></mat-divider>
+  
+    <mat-card-content>
+      <!-- Authors -->
+      <p class="field"><strong>Authors:</strong> {{ getAuthorNames() }}</p>
+  
+      <!-- Abstract -->
+      <p class="field" *ngIf="paper.abstract">
+        <strong>Abstract:</strong><br />
+        {{ paper.abstract }}
+      </p>
+    </mat-card-content>
+  
+    <mat-divider></mat-divider>
+  
+    <mat-card-actions class="actions">
+      <!-- Download button -->
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="getDownloadLink() as dl"
+        (click)="openLink(dl.url)"
+      >
+        <mat-icon>file_download</mat-icon>
+        Download PDF
+      </button>
+  
+      <!-- Other link buttons -->
+      <ng-container *ngFor="let link of getOtherLinks()">
+        <button
+          mat-stroked-button
+          class="link-btn"
+          (click)="openLink(link.url)"
+        >
+          <mat-icon>link</mat-icon>
+          {{ link.type | titlecase }}
+        </button>
+      </ng-container>
+  
+      <!-- Back button -->
+      <button mat-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Back
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  
