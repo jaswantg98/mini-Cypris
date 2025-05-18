@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit {
   searchResults: Result[] = [];
   isLoading = false;
   errorMessage = '';
+  limit?: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,8 +29,10 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
-      const q = params.get('q') || '';
-      if (!q.trim()) {
+      this.searchTerm = params.get('q') || '';
+      console.log("search term is: ", this.searchTerm);
+      this.limit = params.has('limit') ? +params.get('limit')! : undefined;
+      if (!this.searchTerm.trim()) {
         console.log("empty search is hit");
         
         // clear results
@@ -39,11 +42,9 @@ export class ResultsComponent implements OnInit {
           data: { message: `Search term can't be empty — please add a valid keyword.` },
           panelClass: 'search-error-panel'
         });
-        this.searchTerm = '';
-        this.searchResults = []
+        this.router.navigate(['/']);
         return;
       }
-      this.searchTerm = q;
       this.fetchResults();
     });
   }
@@ -51,7 +52,7 @@ export class ResultsComponent implements OnInit {
   private fetchResults() {
     this.isLoading = true;
     this.errorMessage = '';
-    this.coreApiService.searchOutputsByKeywords(this.searchTerm).subscribe({
+    this.coreApiService.searchOutputsByKeywords(this.searchTerm, this.limit).subscribe({
       next: res => {
         this.isLoading = false;
         this.searchResults = res.results || [];
