@@ -13,8 +13,36 @@
     margin-bottom: 20px;
   }
   
-  .search-input {
-    width: 100%;
-    margin-bottom: 15px;
+  /* new flex container for the controls */
+  .search-controls {
+    display: flex;
+    align-items: center;     /* center children at their natural height */
+    gap: 12px;                /* space between items */
+    flex-wrap: nowrap;        /* keep on one line */
   }
   
+  /* keyword input grows, but stays its default height */
+  .search-controls .search-input {
+    flex: 1 1 auto;
+  }
+  
+  /* limit input stays its own height */
+  .limit-input {
+    flex: 0 0 100px;
+  }
+  
+  /* adjust button to match input height */
+  .search-controls button {
+    height: 56px;  /* Match the height of mat-form-field */
+    margin-top: -22px;  /* Adjust vertical alignment */
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 36px;
+  }
+  
+  /* Fix for Firefox alignment */
+  @-moz-document url-prefix() {
+    .search-controls button {
+      margin-top: 0;
+    }
+  }

@@ -14,14 +14,18 @@ export class CoreApiService {
 
   constructor(private http: HttpClient) {}
 
-  searchOutputsByKeywords(keywords: string): Observable<any> {
+  searchOutputsByKeywords(keywords: string, limit?: number): Observable<CoreApiResponse> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.apiKey}`
     });
 
-    const params = new HttpParams()
+    let params = new HttpParams()
       // .set('q', `fullText:"${keywords}"`)
       .set('q', keywords);
+
+      if (limit && limit > 0) {
+        params = params.set('limit', limit.toString());
+      }
 
       return this.http.get<CoreApiResponse>(this.baseUrl, { headers, params }).pipe(
         catchError((error) => {

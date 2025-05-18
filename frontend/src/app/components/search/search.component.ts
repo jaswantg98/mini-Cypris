@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent {
   searchTerm: string = '';
+  limit?: number;
 
   constructor(private router: Router) {}
 
@@ -16,7 +17,11 @@ export class SearchComponent {
     // if (!term) {
     //   return;
     // }
+    const queryParams: any = { q: term };
+    if (this.limit && this.limit > 0) {
+      queryParams.limit = this.limit;
+    }
     // Navigate to /result?q=term
-    this.router.navigate(['/result'], { queryParams: { q: term } });
+    this.router.navigate(['/result'], { queryParams });
   }
 }

@@ -1,18 +1,35 @@
 <div class="search-container">
     <mat-card class="search-card">
       <h2>Search Research Papers</h2>
-      <mat-form-field appearance="outline" class="search-input">
-        <mat-label>Enter search term</mat-label>
-        <input
-          matInput
-          [(ngModel)]="searchTerm"
-          (keyup.enter)="onSearch()"
-          placeholder="e.g. neural networks"
-        />
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="onSearch()">
-        Search
-      </button>
+  
+      <div class="search-controls">
+        <mat-form-field appearance="outline" class="search-input">
+          <mat-label>Keywords</mat-label>
+          <input
+            matInput
+            [(ngModel)]="searchTerm"
+            (keyup.enter)="onSearch()"
+            placeholder="e.g. drone delivery"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="limit-input">
+          <mat-label>Max results</mat-label>
+          <input
+            matInput
+            type="number"
+            min="1"
+            [max]="10000"
+            [(ngModel)]="limit"
+            (keyup.enter)="onSearch()"
+            placeholder="10"
+          />
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" (click)="onSearch()">
+          Search
+        </button>
+      </div>
     </mat-card>
   </div>
   
