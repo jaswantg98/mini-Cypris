@@ -1,0 +1,30 @@
+.app-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 64px;             /* enforce the standard Material toolbar height */
+    display: flex;
+    align-items: center;      /* center all children vertically */
+    padding: 0 16px;          /* optional horizontal padding */
+  }
+  
+  .logo-link {
+    display: flex;
+    align-items: center;      /* vertically center logo + text */
+    height: 100%;             /* span full toolbar height */
+    text-decoration: none;
+  }
+  
+  .logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  
+  .app-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    line-height: normal;      /* let flexbox center it, no extra line-height */
+  }
+  
