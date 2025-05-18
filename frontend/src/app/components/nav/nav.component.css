@@ -1,0 +1,30 @@
+.app-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  .logo-link {
+    display: flex;
+    align-items: center; 
+    height: 100%; 
+    text-decoration: none;
+  }
+  
+  .logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  
+  .app-name {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    line-height: normal;
+  }
+  

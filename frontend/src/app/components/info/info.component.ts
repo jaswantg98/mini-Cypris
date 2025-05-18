@@ -23,42 +23,35 @@ export class InfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Pull the passed object off the router state
     const nav = this.location.getState() as { paper: Result };
     this.paper = nav.paper;
   }
 
-  /** Authors as comma-list */
   public getAuthorNames(): string {
     return this.paper.authors && this.paper.authors.length
       ? this.paper.authors.map(a => a.name).join(', ')
       : 'N/A';
   }
 
-  /** Thumbnail URL or default */
   public getThumbnailUrl(): string {
     const thumb = this.paper.links.find(l => l.type.startsWith('thumbnail'));
     return thumb?.url ?? 'assets/default-thumbnail.png';
   }
 
-  /** The “download” link, if any */
   public getDownloadLink(): Link | undefined {
     return this.paper.links.find(l => l.type === 'download');
   }
 
-  /** All other links (reader, display, etc.) */
   public getOtherLinks(): Link[] {
     return this.paper.links.filter(l =>
       l.type !== 'download' && !l.type.startsWith('thumbnail')
     );
   }
 
-  /** Open an external URL in a new tab */
   public openLink(url: string) {
     window.open(url, '_blank');
   }
 
-  /** Back navigation */
   public goBack() {
     this.location.back();
   }

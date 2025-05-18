@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CoreApiService } from 'src/services/core-api.service';
 import { Result } from 'src/app/models/result.model';
 import { Router } from '@angular/router';
+import { ChartOptions, ChartData, ChartDataset } from 'chart.js';
 
 import { MatDialog } from '@angular/material/dialog';
 import { SearchErrorDialogComponent } from '../search-error-dialog/search-error-dialog.component';
@@ -49,6 +50,27 @@ export class ResultsComponent implements OnInit {
     });
   }
 
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: 'Papers per Publication Year' }
+    }
+  };
+  
+  public barChartData: ChartData<'bar', number[], string> = {
+    labels: [],
+    datasets: [
+      {
+        data: [],
+        label: 'Count',
+        backgroundColor: 'rgba(25, 118, 210, 0.7)',  // Material blue 700, 70% opacity
+        borderColor:   'rgba(25, 118, 210, 1)',       // solid blue border
+        borderWidth: 1
+      } as ChartDataset<'bar', number[]>
+    ]
+  };
+
   private fetchResults() {
     this.isLoading = true;
     this.errorMessage = '';
@@ -56,6 +78,7 @@ export class ResultsComponent implements OnInit {
       next: res => {
         this.isLoading = false;
         this.searchResults = res.results || [];
+        this.updateChart();
       },
       error: () => {
         console.log("results component -> error fetching results");
@@ -65,6 +88,36 @@ export class ResultsComponent implements OnInit {
       }
     });
   }
+
+  /** Builds year buckets and update the barChartData */
+  private updateChart() {
+    const counts: Record<number, number> = {};
+    this.searchResults.forEach(p => {
+      const y = p.yearPublished || new Date(p.publishedDate).getFullYear();
+      counts[y] = (counts[y] || 0) + 1;
+    });
+  
+    const years = Object.keys(counts)
+      .map(v => +v)
+      .sort((a,b) => a-b)
+      .map(v => v.toString());
+    const data = years.map(y => counts[+y]);
+  
+    // reassign barChartData
+    this.barChartData = {
+      labels: years,
+      datasets: [
+        {
+          data,
+          label: 'Count',
+          backgroundColor: 'rgba(25, 118, 210, 0.7)',
+          borderColor:   'rgba(25, 118, 210, 1)',
+          borderWidth: 1
+        }
+      ]
+    };
+  }
+  
 
   getAuthorNames(paper: Result): string {
     return paper.authors?.map(a => a.name).join(', ') || 'N/A';

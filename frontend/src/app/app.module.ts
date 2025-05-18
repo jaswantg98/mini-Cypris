@@ -23,7 +23,10 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchErrorDialogComponent } from './components/search-error-dialog/search-error-dialog.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import { NavComponent } from './components/nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { SearchErrorDialogComponent } from './components/search-error-dialog/sea
     ResultsComponent,
     InfoComponent,
     SearchErrorDialogComponent,
+    NavComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,8 @@ import { SearchErrorDialogComponent } from './components/search-error-dialog/sea
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
+    NgChartsModule,
+    MatToolbarModule,
 
   ],
   providers: [],

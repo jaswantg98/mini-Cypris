@@ -1,4 +1,13 @@
 <app-search></app-search>
+<div class="chart-wrapper" *ngIf="searchResults.length > 0">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      chartType="bar"
+    >
+    </canvas>
+  </div>
 <div class="results-wrapper">
   <h2 *ngIf="searchTerm">Results for “{{ searchTerm }}”</h2>
 
