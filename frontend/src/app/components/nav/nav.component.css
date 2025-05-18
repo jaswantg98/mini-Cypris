@@ -2,16 +2,16 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    height: 64px;             /* enforce the standard Material toolbar height */
+    height: 64px;
     display: flex;
-    align-items: center;      /* center all children vertically */
-    padding: 0 16px;          /* optional horizontal padding */
+    align-items: center;
+    padding: 0 16px;
   }
   
   .logo-link {
     display: flex;
-    align-items: center;      /* vertically center logo + text */
-    height: 100%;             /* span full toolbar height */
+    align-items: center; 
+    height: 100%; 
     text-decoration: none;
   }
   
@@ -25,6 +25,6 @@
     font-size: 2.5rem;
     font-weight: 600;
     color: white;
-    line-height: normal;      /* let flexbox center it, no extra line-height */
+    line-height: normal;
   }
   

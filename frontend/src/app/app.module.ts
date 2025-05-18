@@ -26,6 +26,7 @@ import { SearchErrorDialogComponent } from './components/search-error-dialog/sea
 import { NgChartsModule } from 'ng2-charts';
 import { NavComponent } from './components/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     InfoComponent,
     SearchErrorDialogComponent,
     NavComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
