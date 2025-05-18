@@ -23,7 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { SearchErrorDialogComponent } from './components/search-error-dialog/search-error-dialog.component';
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,7 @@ import { SearchErrorDialogComponent } from './components/search-error-dialog/sea
     MatIconModule,
     MatDividerModule,
     MatDialogModule,
+    NgChartsModule,
 
   ],
   providers: [],

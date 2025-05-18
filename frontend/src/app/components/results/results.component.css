@@ -132,5 +132,13 @@
   .more-info-action button {
     margin-top: 8px;
   }
+
+  /* src/app/components/results/results.component.css */
+
+.chart-wrapper {
+    max-width: 700px;
+    margin: 0 auto 24px;   /* center + bottom spacing */
+  }
+  
   
   
