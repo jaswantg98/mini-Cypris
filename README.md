@@ -3,11 +3,13 @@
 A minimal Angular application that lets you search and explore open-access research papers via the CORE API.  
 Features include:
 
-- **Boolean keyword search** (e.g. `drone AND (package OR delivery)`)  
-- **Adjustable result limit**  
-- **Interactive “Papers per Year” bar chart**  
-- **Expandable details** with authors, dates, publisher, and download links  
-- **Deep-link into individual paper metadata** via an “About” page  
+1. **Search** millions of open-access research papers using Boolean keyword queries  
+2. **Limit** the number of returned results for quick exploration  
+3. **Drill down** into individual paper metadata—authors, dates, publisher, abstract, download links  
+4. **Visualize** publication trends with an interactive “Papers per Year” bar chart  
+5. **Aggregate** counts by year, author, data provider, document type, language, publisher, and more  
+6. **Navigate** directly to a detailed “About” page for each paper  
+
 
 ---
 
@@ -80,15 +82,18 @@ Navigate to http://localhost:4200 in your browser.
 src/
 ├── app/
 │   ├── components/
-│   │   ├── home/          # Landing page with intro + <app-search>
-│   │   ├── nav/           # Global toolbar (logo + name)
-│   │   ├── search/        # Search input + limit box
-│   │   ├── results/       # List of papers + bar chart
-│   │   └── info/          # Detailed view for a single paper
-│   ├── models/            # TypeScript interfaces
-│   ├── services/          # CORE API integration
+│   │   ├── home/               # Landing page + mode selector
+│   │   ├── nav/                # Global toolbar (logo + name)
+│   │   ├── search/             # Classic search UI
+│   │   ├── aggregate-search/   # Aggregation-search UI
+│   │   ├── results/            # List of papers + bar chart
+│   │   ├── aggregate-result/   # Aggregation results + charts
+│   │   └── info/               # Detailed view for a single paper
+│   ├── models/                 # TypeScript interfaces
+│   ├── services/               # CORE API integration
 │   ├── app-routing.module.ts
 │   └── app.module.ts
-├── assets/                # static assets (logo, default thumbnail)
-└── environments/          # environment.ts excluded from repo
+├── assets/                     # static assets (logo, default thumbnail)
+└── environments/               # environment.ts files (not committed)
 ```
+

@@ -18,6 +18,17 @@
           </select>
         </label>
       </div>
+
+      <div class="search-wrapper">
+        <ng-container [ngSwitch]="mode">
+          <p *ngSwitchCase="'search'">
+            This mode allows you to search for research papers using keywords.
+          </p>
+          <p *ngSwitchCase="'agg'">
+            This mode allows you to perform an aggregation search, where you can group results by specific fields.
+          </p>
+        </ng-container>
+      </div>
       
     
       <div class="search-wrapper">
