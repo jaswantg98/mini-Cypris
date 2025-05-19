@@ -64,8 +64,8 @@ export class ResultsComponent implements OnInit {
       {
         data: [],
         label: 'Count',
-        backgroundColor: 'rgba(25, 118, 210, 0.7)',  // Material blue 700, 70% opacity
-        borderColor:   'rgba(25, 118, 210, 1)',       // solid blue border
+        backgroundColor: 'rgba(25, 118, 210, 0.7)',
+        borderColor:   'rgba(25, 118, 210, 1)',
         borderWidth: 1
       } as ChartDataset<'bar', number[]>
     ]
@@ -89,7 +89,6 @@ export class ResultsComponent implements OnInit {
     });
   }
 
-  /** Builds year buckets and update the barChartData */
   private updateChart() {
     const counts: Record<number, number> = {};
     this.searchResults.forEach(p => {
@@ -103,7 +102,6 @@ export class ResultsComponent implements OnInit {
       .map(v => v.toString());
     const data = years.map(y => counts[+y]);
   
-    // reassign barChartData
     this.barChartData = {
       labels: years,
       datasets: [

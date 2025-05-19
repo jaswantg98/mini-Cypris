@@ -11,7 +11,7 @@ Features include:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: [Angular 16](https://angular.io/)  
 - **UI Library**: Angular Material  
@@ -22,7 +22,7 @@ Features include:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -46,7 +46,7 @@ export const environment = {
 ## Installation
 1. Clone this repo
 ```
-git clone https://github.com/your-username/mini-cypris.git
+git clone https://github.com/jaswantg98/mini-Cypris.git
 cd mini-cypris
 
 ```

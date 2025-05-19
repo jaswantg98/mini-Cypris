@@ -1,35 +1,69 @@
-<div class="search-container">
-    <mat-card class="search-card">
-      <h2>Search Research Papers</h2>
-  
+<div class="research-search-container">
+    <div class="search-panel">
+      <h2 class="search-title">Search Research Papers</h2>
+      
       <div class="search-controls">
-        <mat-form-field appearance="outline" class="search-input">
-          <mat-label>Keywords</mat-label>
-          <input
-            matInput
+        <div class="search-input-wrapper">
+          <input 
+            type="text" 
+            class="search-input"
             [(ngModel)]="searchTerm"
+            placeholder="Enter keywords..."
             (keyup.enter)="onSearch()"
-            placeholder="e.g. drone delivery"
-          />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" class="limit-input">
-          <mat-label>Max results</mat-label>
-          <input
-            matInput
-            type="number"
-            min="1"
-            [max]="10000"
-            [(ngModel)]="limit"
-            (keyup.enter)="onSearch()"
+          >
+          <div class="input-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="limit-input-wrapper">
+          <input 
+            type="number" 
+            class="limit-input" 
+            [(ngModel)]="limit" 
+            min="1" 
+            max="10000"
             placeholder="10"
-          />
-        </mat-form-field>
-  
-        <button mat-raised-button color="primary" (click)="onSearch()">
-          Search
+          >
+          <div class="limit-label">Results</div>
+        </div>
+        
+        <button class="search-button" (click)="onSearch()">
+          <span>Search</span>
         </button>
       </div>
-    </mat-card>
+      
+      <!-- Filter options -->
+      <div class="filter-section">
+        <div class="filter-label">Filter by:</div>
+        <div class="filter-options">
+          <label class="filter-option">
+            <input type="checkbox" [(ngModel)]="fields.author">
+            <span class="checkbox-custom"></span>
+            <span class="option-label">Authors</span>
+          </label>
+          
+          <label class="filter-option">
+            <input type="checkbox" [(ngModel)]="fields.title">
+            <span class="checkbox-custom"></span>
+            <span class="option-label">Title</span>
+          </label>
+          
+          <label class="filter-option">
+            <input type="checkbox" [(ngModel)]="fields.id">
+            <span class="checkbox-custom"></span>
+            <span class="option-label">ID</span>
+          </label>
+          
+          <label class="filter-option">
+            <input type="checkbox" [(ngModel)]="fields.year">
+            <span class="checkbox-custom"></span>
+            <span class="option-label">Year</span>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
-  
