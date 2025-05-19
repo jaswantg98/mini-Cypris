@@ -13,8 +13,6 @@ export class CoreApiService {
 
   constructor(private http: HttpClient) {}
 
-  // core-api.service.ts
-  // core-api.service.ts
   aggregateWorks(query: string, aggregations: string[]): Observable<any> {
         const url = `${this.baseUrl}/aggregate`;
         const headers = new HttpHeaders({
