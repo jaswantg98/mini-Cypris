@@ -1,0 +1,21 @@
+<div class="agg-search-container">
+    <h2>Aggregate Search</h2>
+  
+    <div class="agg-controls">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Enter keywords…"
+        (keyup.enter)="onAggregate()"
+      />
+      <button (click)="onAggregate()">Aggregate</button>
+    </div>
+  
+    <div class="agg-options">
+      <label *ngFor="let f of aggFields">
+        <input type="checkbox" [(ngModel)]="options[f]" />
+        {{ f }}
+      </label>
+    </div>
+  </div>
+  

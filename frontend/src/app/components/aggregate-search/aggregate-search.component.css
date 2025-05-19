@@ -1,0 +1,5 @@
+/* aggregate-search.component.css */
+.agg-search-container { text-align:center; margin:24px; }
+.agg-controls { display:flex; gap:8px; justify-content:center; }
+.agg-controls input { flex:1; padding:8px; }
+.agg-options { margin-top:16px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }

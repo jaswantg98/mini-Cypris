@@ -1,0 +1,9 @@
+<!-- aggregate-result.component.html -->
+<ng-container *ngIf="!error; else errTpl">
+    <h2>Aggregation Results</h2>
+    <pre>{{ raw | json }}</pre>
+  </ng-container>
+  
+  <ng-template #errTpl>
+    <p class="error">{{ error }}</p>
+  </ng-template>  

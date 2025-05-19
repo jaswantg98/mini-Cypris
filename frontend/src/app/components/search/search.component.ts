@@ -9,6 +9,7 @@ import { SearchErrorDialogComponent } from '../search-error-dialog/search-error-
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  mode: 'search' | 'agg' = 'search'; 
   searchTerm: string = '';
   limit: number = 10;
 

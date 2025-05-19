@@ -9,8 +9,20 @@
       </p>
     </div>
   
-    <div class="search-wrapper">
-      <app-search></app-search>
-    </div>
+    <div class="mode-selector">
+        <label>
+          <select [(ngModel)]="mode">
+            <option value="search">Search Papers</option>
+            <option value="agg">Aggregation Search</option>
+          </select>
+        </label>
+      </div>
+    
+      <div class="search-wrapper">
+        <ng-container [ngSwitch]="mode">
+          <app-search *ngSwitchCase="'search'"></app-search>
+          <app-aggregate-search *ngSwitchCase="'agg'"></app-aggregate-search>
+        </ng-container>
+      </div>
   </div>
   

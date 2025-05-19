@@ -1,0 +1,4 @@
+/* aggregate-result.component.css */
+.agg-result-container { padding:24px; }
+.error { color:red; }
+pre { background:#f9f9f9; padding:16px; overflow:auto; }
