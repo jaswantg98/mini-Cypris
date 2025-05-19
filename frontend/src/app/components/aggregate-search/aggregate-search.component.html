@@ -1,21 +1,46 @@
-<div class="agg-search-container">
-    <h2>Aggregate Search</h2>
+<div class="research-search-container">
+    <div class="search-panel">
+      <h2 class="search-title">Aggregate Search</h2>
   
-    <div class="agg-controls">
-      <input
-        type="text"
-        [(ngModel)]="searchTerm"
-        placeholder="Enter keywords…"
-        (keyup.enter)="onAggregate()"
-      />
-      <button (click)="onAggregate()">Aggregate</button>
-    </div>
+      <!-- controls row -->
+      <div class="search-controls">
+        <!-- text input -->
+        <div class="search-input-wrapper">
+          <input
+            type="text"
+            class="search-input"
+            [(ngModel)]="searchTerm"
+            placeholder="Enter keywords…"
+            (keyup.enter)="onAggregate()"
+          />
+          <div class="input-icon">
+            <!-- same magnifier icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
   
-    <div class="agg-options">
-      <label *ngFor="let f of aggFields">
-        <input type="checkbox" [(ngModel)]="options[f]" />
-        {{ f }}
-      </label>
+        <!-- aggregate button -->
+        <button class="search-button" (click)="onAggregate()">
+          <span>Aggregate</span>
+        </button>
+      </div>
+  
+      <!-- aggregation‐field checkboxes -->
+      <div class="filter-section">
+        <div class="filter-label">Group by:</div>
+        <div class="filter-options">
+          <label class="filter-option" *ngFor="let f of aggFields">
+            <input type="checkbox" [(ngModel)]="options[f]" />
+            <span class="checkbox-custom"></span>
+            <span class="option-label">{{ f }}</span>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
   
