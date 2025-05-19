@@ -72,9 +72,35 @@ Navigate to http://localhost:4200 in your browser.
 
 `ng build` — compile production build to dist/
 
-`ng test` — run unit tests
+## How To Use
+Once the app is running at http://localhost:4200, follow these steps to explore open-access research papers via the CORE API.
 
-`ng lint` — run linter
+1. Choose a Search Mode
+On the Home Page, use the dropdown to select one of the two modes:
+Search Papers – Search using Boolean keyword queries with optional filters.
+Aggregation Search – Perform group-based aggregation on search results with visual trends.
+
+2. Search Papers Mode
+Enter a Search Query in the text box (e.g., medicines, (drone AND (package OR delivery)))
+Optional: Set a limit on number of results (default: 10)
+Filters Available:
+Title, Authors, ID, Year
+If no filter is selected, search is performed across all fields.
+Click Search to view results.
+
+Error Handling:
+Empty query: A popup prompts you to enter valid input.
+No results: A message is shown if the query returns nothing.
+
+3. Aggregation Search Mode
+Enter a Keyword (e.g., drones)
+Select one or more Group By fields:
+yearPublished (default), authors, dataProvider, documentType, publishedDate, updatedDate, language, publisher, fieldOfStudy
+Click Aggregate to fetch results.
+A bar chart will be displayed showing aggregated trends based on the selected groupings.
+
+Error Handling:
+Same as in Search Papers: empty input prompts a message, and no results are handled gracefully.
 
 ## Project Structure
 
