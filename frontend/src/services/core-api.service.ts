@@ -13,6 +13,20 @@ export class CoreApiService {
 
   constructor(private http: HttpClient) {}
 
+  aggregateWorks(query: string, aggregations: string[]): Observable<any> {
+        const url = `${this.baseUrl}/aggregate`;
+        const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.apiKey}`,
+        'Content-Type': 'application/json'
+    });
+        const body = { q: query, aggregations };
+        return this.http.post<any>(url, body, { headers }).pipe(
+        catchError(err => throwError(() => new Error(err.message || 'Aggregation failed')))
+    );
+  }
+
+
+
   searchOutputsByKeywords(keywords: string, limit?: number): Observable<CoreApiResponse> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.apiKey}`

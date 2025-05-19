@@ -1,0 +1,30 @@
+<app-aggregate-search></app-aggregate-search>
+<div class="agg-result-container" *ngIf="!error; else errTpl">
+    <h2>Aggregation Results</h2>
+
+    <div class="loader" *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+      </div>
+
+  
+    <ng-container>
+        <ng-container *ngFor="let key of aggKeys">
+            <section class="chart-section">
+              <h3>{{ key | titlecase }}</h3>
+              <div class="chart-wrapper">
+                <canvas
+                  baseChart
+                  [data]="aggChartData[key]"
+                  [options]="chartOptions"
+                  chartType="bar"
+                ></canvas>
+              </div>
+            </section>
+          </ng-container>
+    </ng-container>
+  </div>
+  
+  <ng-template #errTpl>
+    <p class="error">{{ error }}</p>
+  </ng-template>
+  

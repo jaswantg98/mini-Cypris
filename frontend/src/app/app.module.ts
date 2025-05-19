@@ -27,6 +27,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { NavComponent } from './components/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './components/home/home.component';
+import { AggregateSearchComponent } from './components/aggregate-search/aggregate-search.component';
+import { AggregateResultComponent } from './components/aggregate-result/aggregate-result.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { HomeComponent } from './components/home/home.component';
     SearchErrorDialogComponent,
     NavComponent,
     HomeComponent,
+    AggregateSearchComponent,
+    AggregateResultComponent,
   ],
   imports: [
     BrowserModule,
